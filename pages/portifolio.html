@@ -26,65 +26,8 @@
     <section>
       <h2>Nossos <span>Produtos</span></h2>
       <span class="legenda">Gear pro level</span>
-      <div class="cards">
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&h=400&fit=crop" alt="Mouse Gamer" />
-          <div class="card-conteudo">
-            <span class="tag">MAIS VENDIDO</span>
-            <h3>Mouse Gamer Viper Pro</h3>
-            <p class="descricao">26.000 DPI, sensor óptico de elite, RGB Chroma, 6 botões programáveis.</p>
-            <p class="preco">R$ 449,90</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=400&fit=crop" alt="Teclado Mecânico" />
-          <div class="card-conteudo">
-            <h3>Teclado Mecânico K85 RGB</h3>
-            <p class="descricao">Switches red lineares, ABNT2, RGB per-key, hot-swappable e apoio de pulso.</p>
-            <p class="preco">R$ 699,90</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1599669454699-248893623440?w=600&h=400&fit=crop" alt="Headset Gamer" />
-          <div class="card-conteudo">
-            <span class="tag cyan">PROMOÇÃO</span>
-            <h3>Headset HyperSound 7.1</h3>
-            <p class="descricao">Áudio surround 7.1, microfone removível com cancelamento de ruído, drivers de 50mm.</p>
-            <p class="preco"><span class="preco-antigo">R$ 599,90</span>R$ 449,90</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1616874535244-73aea5daadb9?w=600&h=400&fit=crop" alt="Mousepad XXL" />
-          <div class="card-conteudo">
-            <h3>Mousepad XXL Carbon</h3>
-            <p class="descricao">900x400mm, base antiderrapante, superfície speed/control, costura reforçada.</p>
-            <p class="preco">R$ 159,90</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&h=400&fit=crop" alt="Cadeira Gamer" />
-          <div class="card-conteudo">
-            <span class="tag">NOVIDADE</span>
-            <h3>Cadeira Gamer Throne X</h3>
-            <p class="descricao">Reclinação 180°, apoio lombar lombar 4D, suporta até 150kg, espuma high density.</p>
-            <p class="preco">R$ 1.899,90</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=600&h=400&fit=crop" alt="Webcam Streaming" />
-          <div class="card-conteudo">
-            <h3>Webcam Stream 4K</h3>
-            <p class="descricao">Resolução 4K 60fps, autofoco, microfone estéreo e suporte ao OBS Studio.</p>
-            <p class="preco">R$ 749,90</p>
-          </div>
-        </div>
-
+      <div class="cards" id="lista-produtos">
+        <!-- Renderizado pelo JS -->
       </div>
     </section>
 
@@ -103,27 +46,27 @@
         <tbody>
           <tr>
             <td>Setup Starter</td>
-            <td>Mouse Viper Pro + Mousepad XXL</td>
-            <td>R$ 609</td>
-            <td class="destaque">R$ 499</td>
-          </tr>
-          <tr>
-            <td>Setup Streamer</td>
-            <td>Webcam 4K + Headset 7.1 + Mousepad</td>
-            <td>R$ 1.299</td>
-            <td class="destaque">R$ 999</td>
-          </tr>
-          <tr>
-            <td>Setup Pro Player</td>
-            <td>Mouse + Teclado K85 + Headset + Mousepad</td>
-            <td>R$ 1.759</td>
+            <td>Razer Viper V3 + Mousepad XXL</td>
+            <td>R$ 1.609</td>
             <td class="destaque">R$ 1.299</td>
           </tr>
           <tr>
-            <td>Setup Throne</td>
-            <td>Cadeira Throne X + Mouse + Teclado + Headset</td>
+            <td>Setup Streamer</td>
+            <td>Webcam Logitech + HyperX QuadCast + Headset</td>
             <td>R$ 3.499</td>
             <td class="destaque">R$ 2.799</td>
+          </tr>
+          <tr>
+            <td>Setup Pro Player</td>
+            <td>Razer Viper + Huntsman V3 + Cloud III + Mousepad</td>
+            <td>R$ 4.759</td>
+            <td class="destaque">R$ 3.899</td>
+          </tr>
+          <tr>
+            <td>Setup Throne</td>
+            <td>Cadeira Razer Iskur + Mouse + Teclado + Headset</td>
+            <td>R$ 8.499</td>
+            <td class="destaque">R$ 6.999</td>
           </tr>
         </tbody>
       </table>
@@ -153,6 +96,31 @@
     <p class="copyright">© 2026 N STORE — TODOS OS DIREITOS RESERVADOS.</p>
   </footer>
 
+  <script src="../src/js/auth.js"></script>
+  <script src="../src/js/carrinho.js"></script>
   <script src="../src/js/script.js"></script>
+  <script src="../src/js/produtos.js"></script>
+  <script>
+    // Renderizar cards de produtos
+    const lista = document.getElementById('lista-produtos');
+    lista.innerHTML = PRODUTOS.map(p => `
+      <div class="card">
+        <img src="${p.img}" alt="${p.nome}"
+             onerror="this.onerror=null;this.src='${p.imgFallback}'" />
+        <div class="card-conteudo">
+          ${p.tag ? `<span class="tag ${p.tagClasse || ''}">${p.tag}</span>` : ''}
+          <h3>${p.nome}</h3>
+          <p class="descricao">${p.descricao}</p>
+          <p class="preco">
+            ${p.precoAntigo ? `<span class="preco-antigo">${formatarBRL(p.precoAntigo)}</span>` : ''}
+            ${formatarBRL(p.preco)}
+          </p>
+          <button class="btn-comprar" onclick='Carrinho.adicionar(${JSON.stringify(p)})'>
+            🛒 Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+    `).join('');
+  </script>
 </body>
 </html>
