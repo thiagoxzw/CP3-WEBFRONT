@@ -1,11 +1,3 @@
-// ====================================
-// CATÁLOGO DE PRODUTOS
-// Imagens salvas localmente em src/assets/img/produtos/
-// Para substituir por foto oficial do fabricante:
-//   - baixe a imagem do site oficial (Razer, Logitech, HyperX)
-//   - sobrescreva o arquivo .jpg em src/assets/img/produtos/
-//   - o site usa automaticamente
-// ====================================
 
 // Detecta caminho base (se está em /pages/ ou na raiz)
 const BASE_IMG = (location.pathname.includes('/pages/') ? '../' : '') + 'src/assets/img/produtos/';
@@ -45,7 +37,7 @@ const PRODUTOS = [
     precoAntigo: 1199.90,
     tag: 'PROMOÇÃO',
     tagClasse: 'cyan',
-    img: BASE_IMG + 'headset-cloud.jpg'
+    img: BASE_IMG + 'headset-cloud.png'
   },
   {
     id: 'razer-goliathus-extended',
@@ -53,7 +45,7 @@ const PRODUTOS = [
     marca: 'Razer',
     descricao: 'Mousepad 920x294mm, base antiderrapante, RGB Chroma com 16,8M de cores, superfície micro-texturizada.',
     preco: 499.90,
-    img: BASE_IMG + 'mousepad-goliathus.jpg'
+    img: BASE_IMG + 'mousepad-goliathus.png'
   },
   {
     id: 'razer-iskur-v2',
