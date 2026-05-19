@@ -5,14 +5,19 @@
 }
 
 :root {
-  --bg: #0a0a0f;
-  --bg-card: #14141f;
-  --bg-elevated: #1a1a26;
-  --cyan: #00f0ff;
-  --magenta: #ff00aa;
+  --bg: #0e0e14;
+  --bg-card: #16161e;
+  --bg-elevated: #1c1c28;
+  --roxo: #a855f7;
+  --roxo-claro: #c084fc;
+  --verde: #00ff88;
+  --dourado: #ffd700;
   --branco: #ffffff;
-  --cinza-claro: #b0b0b8;
+  --cinza-claro: #b0b0bb;
   --cinza-escuro: #555;
+  /* aliases para compatibilidade dos nomes antigos */
+  --cyan: var(--verde);
+  --magenta: var(--roxo);
 }
 
 body {
