@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrinho - N Store</title>
+  <link rel="icon" href="../src/assets/img/logo.png" />
+  <link rel="stylesheet" href="../src/css/estilo.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">
+      <img src="../src/assets/img/logo.png" alt="N Store" />
+      <span>N STORE</span>
+    </a>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="portifolio.html">Portifólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Meu <span>Carrinho</span></h2>
+      <span class="legenda">Inventário pré-checkout</span>
+
+      <div class="carrinho-container" id="carrinho-container">
+        <!-- Renderizado pelo JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>N Store</h4>
+        <p>Periféricos gamer high-end</p>
+        <p>Av. Paulista, 1000 - SP</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>📞 (11) 4002-8922</p>
+        <p>✉️ contato@nstore.com.br</p>
+      </div>
+      <div class="footer-col">
+        <h4>Redes Sociais</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Discord</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 N STORE — TODOS OS DIREITOS RESERVADOS.</p>
+  </footer>
+
+  <script src="../src/js/auth.js"></script>
+  <script src="../src/js/carrinho.js"></script>
+  <script src="../src/js/script.js"></script>
+  <script>
+    exigirLogin();
+
+    function renderCarrinho() {
+      const container = document.getElementById('carrinho-container');
+      const itens = Carrinho.obter();
+
+      if (itens.length === 0) {
+        container.innerHTML = `
+          <div class="carrinho-vazio">
+            <p>🛒 Seu carrinho está vazio.</p>
+            <a href="portifolio.html" class="btn">Ver Produtos</a>
+          </div>
+        `;
+        return;
+      }
+
+      const html = itens.map(item => `
+        <div class="carrinho-item">
+          <img src="${item.img}" alt="${item.nome}" />
+          <div class="info">
+            <h3>${item.nome}</h3>
+            <p class="marca">${item.marca}</p>
+          </div>
+          <div class="quantidade">
+            <button onclick="Carrinho.alterarQuantidade('${item.id}', -1)">−</button>
+            <span>${item.quantidade}</span>
+            <button onclick="Carrinho.alterarQuantidade('${item.id}', 1)">+</button>
+          </div>
+          <div class="preco-item">${formatarBRL(item.preco * item.quantidade)}</div>
+          <button class="btn-remover" onclick="Carrinho.remover('${item.id}')" title="Remover">×</button>
+        </div>
+      `).join('');
+
+      const total = Carrinho.total();
+      const frete = total >= 299 ? 0 : 29.90;
+
+      container.innerHTML = html + `
+        <div class="carrinho-resumo">
+          <div class="linha"><span>Subtotal</span><span>${formatarBRL(total)}</span></div>
+          <div class="linha"><span>Frete</span><span>${frete === 0 ? 'GRÁTIS' : formatarBRL(frete)}</span></div>
+          <div class="linha total"><span>Total</span><span>${formatarBRL(total + frete)}</span></div>
+          <button class="btn" onclick="Pedidos.criar()">Finalizar Compra</button>
+        </div>
+      `;
+    }
+
+    renderCarrinho();
+  </script>
+</body>
+</html>
