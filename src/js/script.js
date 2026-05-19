@@ -8,13 +8,16 @@ links.forEach(link => {
 });
 
 // Envio do formulário de contato
-const form = document.querySelector('.form-contato');
-if (form) {
-  form.addEventListener('submit', function (e) {
+// IMPORTANTE: o seletor precisa ser específico do form de contato, senão
+// pega os forms de login/cadastro (que também usam .form-contato para estilo)
+// e dispara form.reset() antes do handler real ler os valores.
+const formContato = document.querySelector('form.form-contato textarea[name="descricao"]')?.closest('form');
+if (formContato) {
+  formContato.addEventListener('submit', function (e) {
     e.preventDefault();
-    const nome = form.querySelector('input[name="nome"]').value;
+    const nome = formContato.querySelector('input[name="nome"]').value;
     alert('GG ' + nome + '! Sua mensagem foi enviada. A equipe da N Store retornará em breve.');
-    form.reset();
+    formContato.reset();
   });
 }
 

@@ -74,6 +74,9 @@
   <script src="../src/js/carrinho.js"></script>
   <script src="../src/js/script.js"></script>
   <script>
+    // Remove cadastros corrompidos (do bug anterior do form.reset)
+    Auth.limparUsuariosInvalidos();
+
     document.getElementById('form-login').addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('email').value;

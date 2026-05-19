@@ -15,6 +15,12 @@ const Auth = {
   },
 
   cadastrar(nome, email, senha) {
+    nome = (nome || '').trim();
+    email = (email || '').trim().toLowerCase();
+    senha = (senha || '').trim();
+    if (!nome || !email || !senha) {
+      return { ok: false, msg: 'Preencha todos os campos.' };
+    }
     const users = this.getUsers();
     if (users.find(u => u.email === email)) {
       return { ok: false, msg: 'E-mail já cadastrado.' };
@@ -26,12 +32,20 @@ const Auth = {
   },
 
   login(email, senha) {
+    email = (email || '').trim().toLowerCase();
+    senha = (senha || '').trim();
     const user = this.getUsers().find(u => u.email === email && u.senha === senha);
     if (!user) {
       return { ok: false, msg: 'E-mail ou senha incorretos.' };
     }
     localStorage.setItem('nstore_logado', email);
     return { ok: true, msg: 'Login realizado!' };
+  },
+
+  // Remove usuários inválidos (criados antes do fix do form.reset)
+  limparUsuariosInvalidos() {
+    const validos = this.getUsers().filter(u => u.email && u.senha && u.nome);
+    this.saveUsers(validos);
   },
 
   logout() {
