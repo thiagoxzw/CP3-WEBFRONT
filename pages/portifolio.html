@@ -105,8 +105,7 @@
     const lista = document.getElementById('lista-produtos');
     lista.innerHTML = PRODUTOS.map(p => `
       <div class="card">
-        <img src="${p.img}" alt="${p.nome}"
-             onerror="this.onerror=null;this.src='${p.imgFallback}'" />
+        <img src="${p.img}" alt="${p.nome}" />
         <div class="card-conteudo">
           ${p.tag ? `<span class="tag ${p.tagClasse || ''}">${p.tag}</span>` : ''}
           <h3>${p.nome}</h3>
