@@ -1,50 +1,80 @@
 # N Store — Loja Gamer
 
-Site institucional dinâmico e responsivo da **N Store** (Nexus Store), loja de periféricos gamer high-end. Projeto desenvolvido como entrega da CP de Web Front-End.
+Site dinâmico e responsivo da **N Store** (Nexus Store), e-commerce de periféricos gamer high-end com sistema completo de **cadastro, login, carrinho e pedidos**.
 
 ## Tema
-Loja Gamer — Periféricos high-end
+Loja Gamer — Periféricos high-end (Razer, Logitech G, HyperX)
 
-## Estrutura do Projeto
+## Estrutura
 
 ```
 .
 ├── index.html
 ├── pages/
-│   ├── portifolio.html
+│   ├── portifolio.html      (catálogo + setups promocionais)
 │   ├── sobre.html
-│   └── contato.html
+│   ├── contato.html
+│   ├── login.html           (NOVO)
+│   ├── cadastro.html        (NOVO)
+│   ├── carrinho.html        (NOVO - protegida)
+│   └── pedidos.html         (NOVO - protegida)
 └── src/
     ├── assets/
-    │   ├── img/
-    │   │   └── logo.png
+    │   ├── img/logo.png
     │   └── pdf/
-    ├── css/
-    │   └── estilo.css
+    ├── css/estilo.css
     └── js/
-        └── script.js
+        ├── script.js        (geral + nav dinâmico)
+        ├── auth.js          (cadastro/login/logout)
+        ├── carrinho.js      (carrinho + pedidos)
+        └── produtos.js      (catálogo)
 ```
 
-## Páginas
+## Funcionalidades
 
-- **Home** — Hero com logo, apresentação da loja e cards de diferenciais (originais, entrega, suporte).
-- **Portifólio** — 6 cards de produtos (mouse, teclado, headset, mousepad, cadeira, webcam) e tabela de setups promocionais.
-- **Sobre** — História da N Store em layout 2 colunas (foto + texto).
-- **Contato** — Formulário com nome, e-mail e mensagem.
+### 🛒 E-commerce
+- **Catálogo dinâmico** com 8 produtos reais (Razer Viper V3 Pro, Logitech G Pro X Superlight 2, Razer Huntsman, HyperX Cloud III, etc.)
+- Fotos diretas das CDNs das marcas com fallback automático
+- **Botão "Adicionar ao Carrinho"** em cada produto
+- **Carrinho persistente** por usuário (localStorage)
+- Controle de quantidade, remoção de itens
+- Cálculo de frete (grátis acima de R$ 299)
+- **Finalização de pedido** com número gerado
+
+### 👤 Autenticação
+- Cadastro de usuário (nome, e-mail, senha)
+- Login com validação
+- **Nav dinâmico**: mostra nome do usuário + ícone do carrinho com badge
+- Logout
+- **Páginas protegidas**: Carrinho e Pedidos exigem login
+
+### 📦 Pedidos
+- Histórico completo de pedidos por usuário
+- Número do pedido, data, itens, total e status
+- Persistência via localStorage
 
 ## Tecnologias
 
 - HTML5 semântico
 - CSS3 (variáveis, Flexbox, Grid, animações, responsividade)
-- JavaScript vanilla (menu ativo, formulário, scroll suave, fade-in via IntersectionObserver)
+- JavaScript vanilla (módulos Auth, Carrinho, Pedidos)
+- localStorage para persistência
 
 ## Identidade Visual
 
 - **Logo:** criado no Canva
-- **Paleta:** preto `#0a0a0f`, neon cyan `#00f0ff`, magenta `#ff00aa`, branco
-- **Tipografia:** sans-serif moderno (Segoe UI / Inter)
+- **Paleta:** roxo neon `#a855f7`, verde elétrico `#00ff88`, fundo preto `#0e0e14`, dourado para destaques
+- **Tipografia:** sans-serif moderno
 - **Estilo:** cyberpunk gamer, dark com glow neon
 
 ## Como Executar
 
-Abra o arquivo `index.html` no navegador, ou hospede via GitHub Pages.
+Abra `index.html` no navegador, ou hospede via GitHub Pages.
+
+## Como Testar o E-commerce
+
+1. Acesse a página de **Cadastro** e crie uma conta
+2. Vá em **Portifólio** e clique em "Adicionar ao Carrinho" em vários produtos
+3. Acesse o **Carrinho** (ícone 🛒 no nav) para ajustar quantidades
+4. Clique em **Finalizar Compra**
+5. Veja seu pedido em **Meus Pedidos** (clicando no seu nome no nav)
