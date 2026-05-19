@@ -530,3 +530,380 @@ footer .copyright {
     gap: 30px;
   }
 }
+
+/* ========================================== */
+/* AUTH (login + cadastro)                    */
+/* ========================================== */
+.auth-container {
+  max-width: 440px;
+  margin: 60px auto;
+  background-color: var(--bg-elevated);
+  border: 1px solid #2a2a3a;
+  border-top: 3px solid var(--roxo);
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.auth-container .legenda {
+  margin-bottom: 30px;
+}
+
+.auth-container .auth-link {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--cinza-claro);
+  font-size: 0.9rem;
+}
+
+.auth-container .auth-link a {
+  color: var(--verde);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.auth-container .auth-link a:hover {
+  text-decoration: underline;
+}
+
+.auth-msg {
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.auth-msg.erro {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid #ef4444;
+  display: block;
+}
+
+.auth-msg.sucesso {
+  background-color: rgba(0, 255, 136, 0.12);
+  color: var(--verde);
+  border: 1px solid var(--verde);
+  display: block;
+}
+
+/* ========================================== */
+/* USER BADGE no NAV                          */
+/* ========================================== */
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-badge .user-info {
+  color: var(--branco);
+  font-size: 0.9rem;
+}
+
+.user-badge .user-info b {
+  color: var(--verde);
+}
+
+.user-badge .cart-icon {
+  position: relative;
+  color: var(--branco);
+  text-decoration: none;
+  font-size: 1.3rem;
+  padding: 4px 8px;
+  transition: color 0.3s;
+}
+
+.user-badge .cart-icon:hover {
+  color: var(--roxo);
+}
+
+.user-badge .cart-icon .badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--verde);
+  color: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.user-badge .btn-logout {
+  background: transparent;
+  color: var(--cinza-claro);
+  border: 1px solid #2a2a3a;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.user-badge .btn-logout:hover {
+  border-color: var(--roxo);
+  color: var(--roxo);
+}
+
+/* ========================================== */
+/* BOTÃO COMPRAR NOS CARDS                    */
+/* ========================================== */
+.card .btn-comprar {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  background: linear-gradient(135deg, var(--roxo), var(--verde));
+  color: var(--bg);
+  border: none;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.card .btn-comprar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.4);
+}
+
+/* ========================================== */
+/* CARRINHO                                   */
+/* ========================================== */
+.carrinho-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.carrinho-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--cinza-claro);
+}
+
+.carrinho-vazio p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.carrinho-item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto auto auto;
+  gap: 20px;
+  align-items: center;
+  padding: 18px;
+  background-color: var(--bg-elevated);
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.carrinho-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.carrinho-item .info h3 {
+  font-size: 1rem;
+  color: var(--branco);
+  margin-bottom: 4px;
+}
+
+.carrinho-item .info .marca {
+  color: var(--cinza-claro);
+  font-size: 0.85rem;
+}
+
+.carrinho-item .quantidade {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carrinho-item .quantidade button {
+  background: var(--bg);
+  color: var(--branco);
+  border: 1px solid #2a2a3a;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.carrinho-item .quantidade button:hover {
+  border-color: var(--roxo);
+  color: var(--roxo);
+}
+
+.carrinho-item .quantidade span {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.carrinho-item .preco-item {
+  color: var(--verde);
+  font-weight: 800;
+  font-size: 1.1rem;
+  min-width: 100px;
+  text-align: right;
+}
+
+.carrinho-item .btn-remover {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0 4px;
+  transition: transform 0.2s;
+}
+
+.carrinho-item .btn-remover:hover {
+  transform: scale(1.2);
+}
+
+.carrinho-resumo {
+  margin-top: 30px;
+  background-color: var(--bg-elevated);
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.carrinho-resumo .linha {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--cinza-claro);
+}
+
+.carrinho-resumo .total {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--branco);
+  border-top: 1px solid #2a2a3a;
+  margin-top: 12px;
+  padding-top: 14px;
+}
+
+.carrinho-resumo .total span:last-child {
+  color: var(--verde);
+}
+
+.carrinho-resumo .btn {
+  width: 100%;
+  margin-top: 18px;
+  text-align: center;
+}
+
+/* ========================================== */
+/* PEDIDOS                                    */
+/* ========================================== */
+.pedido-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid #2a2a3a;
+  border-left: 4px solid var(--roxo);
+  border-radius: 6px;
+  padding: 22px;
+  margin-bottom: 18px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pedido-card .pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #2a2a3a;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pedido-card .pedido-numero {
+  color: var(--cinza-claro);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.pedido-card .pedido-numero b {
+  color: var(--verde);
+}
+
+.pedido-card .pedido-status {
+  background-color: rgba(0, 255, 136, 0.15);
+  color: var(--verde);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid var(--verde);
+}
+
+.pedido-card .pedido-itens {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.pedido-card .pedido-itens li {
+  padding: 6px 0;
+  color: var(--cinza-claro);
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pedido-card .pedido-itens li .quant {
+  color: var(--roxo);
+  margin-right: 8px;
+}
+
+.pedido-card .pedido-total {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--branco);
+}
+
+.pedido-card .pedido-total span {
+  color: var(--verde);
+}
+
+@media (max-width: 700px) {
+  .carrinho-item {
+    grid-template-columns: 70px 1fr;
+    gap: 10px;
+  }
+  .carrinho-item .quantidade,
+  .carrinho-item .preco-item,
+  .carrinho-item .btn-remover {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .carrinho-item .preco-item {
+    text-align: left;
+  }
+}
