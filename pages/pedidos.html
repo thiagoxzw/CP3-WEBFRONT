@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meus Pedidos - N Store</title>
+  <link rel="icon" href="../src/assets/img/logo.png" />
+  <link rel="stylesheet" href="../src/css/estilo.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">
+      <img src="../src/assets/img/logo.png" alt="N Store" />
+      <span>N STORE</span>
+    </a>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="portifolio.html">Portifólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Meus <span>Pedidos</span></h2>
+      <span class="legenda">Histórico de drops</span>
+
+      <div id="pedidos-container">
+        <!-- Renderizado pelo JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>N Store</h4>
+        <p>Periféricos gamer high-end</p>
+        <p>Av. Paulista, 1000 - SP</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>📞 (11) 4002-8922</p>
+        <p>✉️ contato@nstore.com.br</p>
+      </div>
+      <div class="footer-col">
+        <h4>Redes Sociais</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Discord</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 N STORE — TODOS OS DIREITOS RESERVADOS.</p>
+  </footer>
+
+  <script src="../src/js/auth.js"></script>
+  <script src="../src/js/carrinho.js"></script>
+  <script src="../src/js/script.js"></script>
+  <script>
+    exigirLogin();
+
+    const container = document.getElementById('pedidos-container');
+    const pedidos = Pedidos.obter();
+
+    if (pedidos.length === 0) {
+      container.innerHTML = `
+        <div class="carrinho-vazio">
+          <p>📦 Você ainda não fez nenhum pedido.</p>
+          <a href="portifolio.html" class="btn">Ver Produtos</a>
+        </div>
+      `;
+    } else {
+      container.innerHTML = pedidos.map(p => `
+        <div class="pedido-card">
+          <div class="pedido-header">
+            <div class="pedido-numero">Pedido <b>${p.numero}</b> • ${p.data}</div>
+            <span class="pedido-status">${p.status}</span>
+          </div>
+          <ul class="pedido-itens">
+            ${p.itens.map(i => `
+              <li>
+                <span><span class="quant">${i.quantidade}x</span> ${i.nome}</span>
+                <span>${formatarBRL(i.preco * i.quantidade)}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <div class="pedido-total">Total: <span>${formatarBRL(p.total)}</span></div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
