@@ -37,7 +37,7 @@ const PRODUTOS = [
     precoAntigo: 1199.90,
     tag: 'PROMOÇÃO',
     tagClasse: 'cyan',
-    img: BASE_IMG + 'headset-cloud.png'
+    img: BASE_IMG + 'headset-cloud.jpg'
   },
   {
     id: 'razer-goliathus-extended',
@@ -45,7 +45,7 @@ const PRODUTOS = [
     marca: 'Razer',
     descricao: 'Mousepad 920x294mm, base antiderrapante, RGB Chroma com 16,8M de cores, superfície micro-texturizada.',
     preco: 499.90,
-    img: BASE_IMG + 'mousepad-goliathus.png'
+    img: BASE_IMG + 'mousepad-goliathus.jpg'
   },
   {
     id: 'razer-iskur-v2',
